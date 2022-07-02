@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pips Target Calculator</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="assets/css/mdb.min.css">
+</head>
+<body>
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4" style="margin-bottom: 150px;">
+                <!-- Tabs navs -->
+                <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#pips-target-calculator" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">
+                            Pips Target Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#pips-compute" role="tab" aria-controls="ex1-tabs-2" aria-selected="false">
+                            Pips Compute
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#tp-targets" role="tab" aria-controls="ex1-tabs-3" aria-selected="false">
+                            TP Targets
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tabs navs -->
+                <!-- Tabs content -->
+                <div class="tab-content" id="ex1-content">
+                    <div class="tab-pane fade show active" id="pips-target-calculator" role="tabpanel" aria-labelledby="ex1-tab-1">
+                        <div class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Direction: </label>
+                                <select class="form-select" aria-label="Direction" id="select-direction" required>
+                                    <option selected disabled value="0">Select Direction</option>
+                                    <option value="1">BUY</option>
+                                    <option value="2">SELL</option>
+                                </select>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" id="input-entry-value" class="form-control" inputmode="decimal" required />
+                                <label class="form-label" for="input-entry-value">Entry Value: </label>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" id="input-pips-target" class="form-control" inputmode="decimal" required>
+                                <label class="form-label" for="input-pips-target">Pips Target: </label>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" class="form-control" id="input-take-profit" inputmode="decimal" readonly>
+                                <label class="form-label" for="input-take-profit">Take Profit Value:</label>
+                            </div>
+                            <div class="mb-3 float-end">
+                                <button type="button" class="btn btn-outline-primary" id="btn-calculate" onclick="resetCalculate()">Reset</button>
+                                <button type="button" class="btn btn-primary" id="btn-calculate" onclick="calculate()">Calculate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pips-compute" role="tabpanel" aria-labelledby="ex1-tab-2">
+                        <div class="mt-3">
+                            <div class="mb-3">
+                                <label class="form-label">Direction: </label>
+                                <select class="form-select" aria-label="Direction" id="select-direction-compute"  required>
+                                    <option selected disabled value="0">Select Direction</option>
+                                    <option value="1">BUY</option>
+                                    <option value="2">SELL</option>
+                                </select>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" id="input-entry-value-compute" class="form-control" inputmode="decimal" required />
+                                <label class="form-label" for="input-entry-value-compute">Entry Value: </label>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" id="input-take-profit-compute" class="form-control" inputmode="decimal" required />
+                                <label class="form-label" for="input-take-profit-compute">Take Profit Value: </label>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" class="form-control" id="input-pips" inputmode="decimal" readonly>
+                                <label class="form-label" for="input-pips">Pips: </label>
+                            </div>
+                            <div class="mb-3 float-end">
+                                <button type="button" class="btn btn-outline-primary" id="btn-compute" onclick="resetCompute()">Reset</button>
+                                <button type="button" class="btn btn-primary" id="btn-compute" onclick="compute()">compute</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tp-targets" role="tabpanel" aria-labelledby="ex1-tab-3">
+                        <div class="mt-3">
+                            <div class="container-fluid">
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="input-capital" class="form-control" inputmode="decimal" required />
+                                            <label class="form-label" for="input-capital">Capital:</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-outline-primary" id="btn-compute" onclick="resetComputeTargets()">Reset</button>
+                                        <button type="button" class="btn btn-primary" id="btn-compute" onclick="computeTargets()">Compute</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-md-12">
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control lot-size" id="lot-size" inputmode="decimal" readonly>
+                                            <label class="form-label" for="lot-size">Lot Size: </label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="commission" inputmode="decimal" readonly>
+                                            <label class="form-label" for="commission">Commission: </label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-six-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-six-pips">20 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-sixfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-sixfive-pips">20.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-seven-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-seven-pips">21 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-sevenfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-sevenfive-pips">21.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-eight-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-eight-pips">22 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-eightfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-eightfive-pips">22.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-nine-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-nine-pips">23 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-ninefive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-ninefive-pips">23.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-ten-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-ten-pips">24 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-tenfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-tenfive-pips">24.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-eleven-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-eleven-pips">25 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-elevenfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-elevenfive-pips">25.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-twelve-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-twelve-pips">26 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-twelvefive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-twelvefive-pips">26.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-thirteen-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-thirteen-pips">27 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-thirteenfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-thirteenfive-pips">27.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-fourteen-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-fourteen-pips">28 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-fourteenfive-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-fourteenfive-pips">28.5 pips target:</label>
+                                        </div>
+                                        <div class="form-outline mb-3">
+                                            <input type="text" class="form-control" id="input-fifteen-pips" inputmode="decimal" readonly>
+                                            <label class="form-label" for="input-fifteen-pips">29 pips target:</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- <div class="mb-3 float-end">
+                                <button type="button" class="btn btn-outline-primary" id="btn-compute" onclick="resetComputeTargets()">Reset</button>
+                                <button type="button" class="btn btn-primary" id="btn-compute" onclick="computeTargets()">Compute</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabs content -->
+                
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/mdb.min.js"></script>
+    <script type="text/javascript">
+        function calculate(){
+            let direction = $("#select-direction").val();
+            let entryValue = $("#input-entry-value").val();
+            let pipsTarget = $("#input-pips-target").val();
+            let takeProfit = $("#input-take-profit");
+            pipsTarget = pipsTarget*10;
+
+            let decimalPlaces = entryValue.split(".")[0].length;
+
+            let intEntryValue = parseInt(entryValue.replace(".",""));
+            
+            let calculate = direction == "1" ? intEntryValue+pipsTarget : intEntryValue-pipsTarget;
+            // takeProfit.attr("placeholder", calculate.toFixed(5)).focus();
+            let stringCalc = calculate.toString().substr(0, decimalPlaces) + "." + calculate.toString().substr(decimalPlaces);
+            takeProfit.val(stringCalc).focus();
+        }
+
+        function resetCalculate(){
+            $("#select-direction").val("0");
+            $("#input-entry-value").val("");
+            $("#input-pips-target").val("");
+            $("#input-take-profit").val("");
+        }
+
+        function compute(){
+            let direction = $("#select-direction-compute").val();
+            let entryValue = $("#input-entry-value-compute").val();
+            let takeProfitValue = $("#input-take-profit-compute").val();
+            let pips = $("#input-pips");
+
+            let decimalPlaces = entryValue.split(".")[0].length;
+
+            let entryValueInt = parseInt(entryValue.replace(".",""));
+            let takeProfitValueInt = parseInt(takeProfitValue.replace(".",""));
+
+            let compute = direction == "1" ? takeProfitValueInt-entryValueInt : entryValueInt-takeProfitValueInt;
+            compute = compute/10;
+            pips.val(compute).focus();
+        }
+
+        function resetCompute(){
+            $("#select-direction-compute").val("0");
+            $("#input-entry-value-compute").val("");
+            $("#input-take-profit-compute").val("");
+            $("#input-pips").val("");
+        }
+
+        function toFixedNoRounding(number, precision = 2){
+            const factor = Math.pow(10,precision);
+            return Math.floor(number * factor) / factor;
+        }
+
+        function computeTargets(){
+            let capitalValue = parseFloat($("#input-capital").val());
+            let computeLotSize = capitalValue/2130;
+            // let timesLotSize = toFixedNoRounding(computeLotSize) * 10;
+            let with2Decimals = computeLotSize.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+            let timesLotSize = (with2Decimals*10).toFixed(2);
+            
+            
+
+            console.log(with2Decimals);
+            // console.log(timesLotSize);
+
+            $("#commission").val(with2Decimals*100).focus();
+
+            $('#input-six-pips').val((timesLotSize*20).toFixed(1)).focus();
+            $('#input-seven-pips').val((timesLotSize*21).toFixed(1)).focus();
+            $('#input-eight-pips').val((timesLotSize*22).toFixed(1)).focus();
+            $('#input-nine-pips').val((timesLotSize*23).toFixed(1)).focus();
+            $('#input-ten-pips').val((timesLotSize*24).toFixed(1)).focus();
+            $('#input-eleven-pips').val((timesLotSize*25).toFixed(1)).focus();
+            $('#input-twelve-pips').val((timesLotSize*26).toFixed(1)).focus();
+            $('#input-thirteen-pips').val((timesLotSize*27).toFixed(1)).focus();
+            $('#input-fourteen-pips').val((timesLotSize*28).toFixed(1)).focus();
+            $('#input-fifteen-pips').val((timesLotSize*29).toFixed(1)).focus();
+
+            $('#input-sixfive-pips').val((timesLotSize*20.5).toFixed(1)).focus();
+            $('#input-sevenfive-pips').val((timesLotSize*21.5).toFixed(1)).focus();
+            $('#input-eightfive-pips').val((timesLotSize*22.5).toFixed(1)).focus();
+            $('#input-ninefive-pips').val((timesLotSize*23.5).toFixed(1)).focus();
+            $('#input-tenfive-pips').val((timesLotSize*24.5).toFixed(1)).focus();
+            $('#input-elevenfive-pips').val((timesLotSize*25.5).toFixed(1)).focus();
+            $('#input-twelvefive-pips').val((timesLotSize*26.5).toFixed(1)).focus();
+            $('#input-thirteenfive-pips').val((timesLotSize*27.5).toFixed(1)).focus();
+            $('#input-fourteenfive-pips').val((timesLotSize*28.5).toFixed(1)).focus();
+
+            $("#lot-size").val(computeLotSize).focus();
+        }
+
+        function resetComputeTargets(){
+            $("#lot-size").val("");
+            $("#input-capital").val("");
+            $('#input-six-pips').val("");
+            $('#input-seven-pips').val("");
+            $('#input-eight-pips').val("");
+            $('#input-nine-pips').val("");
+            $('#input-ten-pips').val("");
+            $('#input-eleven-pips').val("");
+            $('#input-twelve-pips').val("");
+            $('#input-thirteen-pips').val("");
+            $('#input-fourteen-pips').val("");
+            $('#input-fifteen-pips').val("");
+
+            $('#input-sixfive-pips').val("");
+            $('#input-sevenfive-pips').val("");
+            $('#input-eightfive-pips').val("");
+            $('#input-ninefive-pips').val("");
+            $('#input-tenfive-pips').val("");
+            $('#input-elevenfive-pips').val("");
+            $('#input-twelvefive-pips').val("");
+            $('#input-thirteenfive-pips').val("");
+            $('#input-fourteenfive-pips').val("");
+            $("#commission").val("");
+        }
+    </script>
+</body>
+</html>
