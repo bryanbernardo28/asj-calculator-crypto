@@ -64,26 +64,26 @@ function computeTargets(){
     let commission = with2Decimals*100;
     $("#commission").val(commission).focus();
 
-    $('#input-six-pips').val("With commission: "+(timesLotSize*20).toFixed(1)+" Without Commission: "+((timesLotSize*20).toFixed(1)-commission)).focus();
-    $('#input-seven-pips').val("With commission: "+(timesLotSize*21).toFixed(1)+" Without Commission: "+((timesLotSize*21).toFixed(1)-commission)).focus();
-    $('#input-eight-pips').val("With commission: "+(timesLotSize*22).toFixed(1)+" Without Commission: "+((timesLotSize*22).toFixed(1)-commission)).focus();
-    $('#input-nine-pips').val("With commission: "+(timesLotSize*23).toFixed(1)+" Without Commission: "+((timesLotSize*23).toFixed(1)-commission)).focus();
-    $('#input-ten-pips').val("With commission: "+(timesLotSize*24).toFixed(1)+" Without Commission: "+((timesLotSize*24).toFixed(1)-commission)).focus();
-    $('#input-eleven-pips').val("With commission: "+(timesLotSize*25).toFixed(1)+" Without Commission: "+((timesLotSize*25).toFixed(1)-commission)).focus();
-    $('#input-twelve-pips').val("With commission: "+(timesLotSize*26).toFixed(1)+" Without Commission: "+((timesLotSize*26).toFixed(1)-commission)).focus();
-    $('#input-thirteen-pips').val("With commission: "+(timesLotSize*27).toFixed(1)+" Without Commission: "+((timesLotSize*27).toFixed(1)-commission)).focus();
-    $('#input-fourteen-pips').val("With commission: "+(timesLotSize*28).toFixed(1)+" Without Commission: "+((timesLotSize*28).toFixed(1)-commission)).focus();
-    $('#input-fifteen-pips').val("With commission: "+(timesLotSize*29).toFixed(1)+" Without Commission: "+((timesLotSize*29).toFixed(1)-commission)).focus();
+    $('#input-six-pips').val("With commission: "+(timesLotSize*20).toFixed(1)+" Without Commission: "+((timesLotSize*20).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-seven-pips').val("With commission: "+(timesLotSize*21).toFixed(1)+" Without Commission: "+((timesLotSize*21).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-eight-pips').val("With commission: "+(timesLotSize*22).toFixed(1)+" Without Commission: "+((timesLotSize*22).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-nine-pips').val("With commission: "+(timesLotSize*23).toFixed(1)+" Without Commission: "+((timesLotSize*23).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-ten-pips').val("With commission: "+(timesLotSize*24).toFixed(1)+" Without Commission: "+((timesLotSize*24).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-eleven-pips').val("With commission: "+(timesLotSize*25).toFixed(1)+" Without Commission: "+((timesLotSize*25).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-twelve-pips').val("With commission: "+(timesLotSize*26).toFixed(1)+" Without Commission: "+((timesLotSize*26).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-thirteen-pips').val("With commission: "+(timesLotSize*27).toFixed(1)+" Without Commission: "+((timesLotSize*27).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-fourteen-pips').val("With commission: "+(timesLotSize*28).toFixed(1)+" Without Commission: "+((timesLotSize*28).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-fifteen-pips').val("With commission: "+(timesLotSize*29).toFixed(1)+" Without Commission: "+((timesLotSize*29).toFixed(1)-commission).toFixed(1)).focus();
 
-    $('#input-sixfive-pips').val("With commission: "+(timesLotSize*20.5).toFixed(1)+" Without Commission: "+((timesLotSize*20.5).toFixed(1)-commission)).focus();
-    $('#input-sevenfive-pips').val("With commission: "+(timesLotSize*21.5).toFixed(1)+" Without Commission: "+((timesLotSize*21.5).toFixed(1)-commission)).focus();
-    $('#input-eightfive-pips').val("With commission: "+(timesLotSize*22.5).toFixed(1)+" Without Commission: "+((timesLotSize*22.5).toFixed(1)-commission)).focus();
-    $('#input-ninefive-pips').val("With commission: "+(timesLotSize*23.5).toFixed(1)+" Without Commission: "+((timesLotSize*23.5).toFixed(1)-commission)).focus();
-    $('#input-tenfive-pips').val("With commission: "+(timesLotSize*24.5).toFixed(1)+" Without Commission: "+((timesLotSize*24.5).toFixed(1)-commission)).focus();
-    $('#input-elevenfive-pips').val("With commission: "+(timesLotSize*25.5).toFixed(1)+" Without Commission: "+((timesLotSize*25.5).toFixed(1)-commission)).focus();
-    $('#input-twelvefive-pips').val("With commission: "+(timesLotSize*26.5).toFixed(1)+" Without Commission: "+((timesLotSize*26.5).toFixed(1)-commission)).focus();
-    $('#input-thirteenfive-pips').val("With commission: "+(timesLotSize*27.5).toFixed(1)+" Without Commission: "+((timesLotSize*27.5).toFixed(1)-commission)).focus();
-    $('#input-fourteenfive-pips').val("With commission: "+(timesLotSize*28.5).toFixed(1)+" Without Commission: "+((timesLotSize*28.5).toFixed(1)-commission)).focus();
+    $('#input-sixfive-pips').val("With commission: "+(timesLotSize*20.5).toFixed(1)+" Without Commission: "+((timesLotSize*20.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-sevenfive-pips').val("With commission: "+(timesLotSize*21.5).toFixed(1)+" Without Commission: "+((timesLotSize*21.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-eightfive-pips').val("With commission: "+(timesLotSize*22.5).toFixed(1)+" Without Commission: "+((timesLotSize*22.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-ninefive-pips').val("With commission: "+(timesLotSize*23.5).toFixed(1)+" Without Commission: "+((timesLotSize*23.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-tenfive-pips').val("With commission: "+(timesLotSize*24.5).toFixed(1)+" Without Commission: "+((timesLotSize*24.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-elevenfive-pips').val("With commission: "+(timesLotSize*25.5).toFixed(1)+" Without Commission: "+((timesLotSize*25.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-twelvefive-pips').val("With commission: "+(timesLotSize*26.5).toFixed(1)+" Without Commission: "+((timesLotSize*26.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-thirteenfive-pips').val("With commission: "+(timesLotSize*27.5).toFixed(1)+" Without Commission: "+((timesLotSize*27.5).toFixed(1)-commission).toFixed(1)).focus();
+    $('#input-fourteenfive-pips').val("With commission: "+(timesLotSize*28.5).toFixed(1)+" Without Commission: "+((timesLotSize*28.5).toFixed(1)-commission).toFixed(1)).focus();
 
     $("#lot-size").val(computeLotSize).focus();
 }
